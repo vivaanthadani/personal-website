@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vivaan Thadani's Mechanical Engineering Portfolio. Showcasing CAD design, finite element analysis, IoT prototypes, and hands-on engineering projects.">
+    <meta name="keywords" content="Mechanical Engineering, Portfolio, CAD, SolidWorks, FEA, ANSYS, Arduino, IoT, Vivaan Thadani, Toronto Metropolitan University">
+    <title>Vivaan Thadani | Mechanical Engineering Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#0b0f19',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Link to Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Inline theme script to prevent flash of unstyled content (FOUC) -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-[#f8fafc] text-[#0f172a] dark:bg-[#0b0f19] dark:text-[#f8fafc] min-h-screen flex flex-col transition-colors duration-300">
+
+<!-- Header & Navigation Bar -->
+<header id="header" class="sticky top-0 z-50 glass-panel border-b border-[#e2e8f0] dark:border-[#1f2937] transition-all duration-300 shadow-sm">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2 text-xl font-extrabold tracking-tight text-gray-900 dark:text-white group">
+            <span class="w-8 h-8 rounded-lg bg-sky-600 dark:bg-sky-500 flex items-center justify-center text-white font-mono text-sm shadow-md transition-transform group-hover:rotate-12">VT</span>
+            <span class="bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent">Vivaan Thadani</span>
+        </a>
+        
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#about" class="nav-link text-sm font-semibold text-slate-600 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">About</a>
+            <a href="#projects" class="nav-link text-sm font-semibold text-slate-600 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Projects</a>
+            <a href="#experience" class="nav-link text-sm font-semibold text-slate-600 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Experience</a>
+            <a href="#contact" class="nav-link text-sm font-semibold text-slate-600 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Contact</a>
+            
+            <!-- Dark Mode Toggle Button -->
+            <button id="theme-toggle" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Theme">
+                <!-- Moon Icon -->
+                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+                <!-- Sun Icon -->
+                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m14.071-7.071l-.707.707M6.343 17.657l-.707.707m2.828-9.9a5 5 0 117.072 0l-.707.707M16.243 16.243l-.707.707"></path>
+                </svg>
+            </button>
+            
+            <a href="VivaanThadani_Resume.pdf" download class="bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700 dark:from-sky-500 dark:to-indigo-500 text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">Download Resume</a>
+        </div>
+        
+        <!-- Mobile Header Actions -->
+        <div class="flex items-center space-x-2 md:hidden">
+            <!-- Mobile Dark Mode Toggle Button -->
+            <button id="theme-toggle-mobile" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Theme">
+                <svg id="theme-toggle-dark-icon-mob" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+                <svg id="theme-toggle-light-icon-mob" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m14.071-7.071l-.707.707M6.343 17.657l-.707.707m2.828-9.9a5 5 0 117.072 0l-.707.707M16.243 16.243l-.707.707"></path>
+                </svg>
+            </button>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-slate-700 dark:text-slate-300 focus:outline-none p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 pt-2 space-y-4 border-t border-[#e2e8f0] dark:border-[#1f2937]">
+        <a href="#about" class="block text-base font-semibold text-slate-600 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">About</a>
+        <a href="#projects" class="block text-base font-semibold text-slate-600 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Projects</a>
+        <a href="#experience" class="block text-base font-semibold text-slate-600 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Experience</a>
+        <a href="#contact" class="block text-base font-semibold text-slate-600 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 transition-colors">Contact</a>
+        <a href="VivaanThadani_Resume.pdf" download class="block bg-gradient-to-r from-sky-600 to-indigo-600 text-white text-center px-4 py-3 rounded-lg font-bold shadow-md">Download Resume</a>
+    </div>
+</header>
+
+<main class="flex-grow">
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden blueprint-grid border-b border-[#e2e8f0] dark:border-[#1f2937] min-h-[85vh] flex items-center py-16">
+        <!-- Overlay for fade out at bottom and sides -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#f8fafc]/50 to-[#f8fafc] dark:via-[#0b0f19]/50 dark:to-[#0b0f19] pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-12 gap-12 items-center">
+            <!-- Left Info -->
+            <div class="md:col-span-7 text-left space-y-6">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full border border-sky-200 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 font-mono text-xs font-semibold uppercase tracking-wider animate-pulse">
+                    <span class="w-2.5 h-2.5 rounded-full bg-sky-600 dark:bg-sky-400"></span>
+                    <span>Seeking Co-op / Internship: Fall 2026 / Winter 2027</span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                    Designing physical solutions for <span class="bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent">real-world</span> challenges.
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl font-light">
+                    I am a second-year Mechanical Engineering student at <strong class="font-semibold text-slate-800 dark:text-slate-100">Toronto Metropolitan University</strong>. Driven by a passion for structural analysis, dynamic modeling, and smart systems, I aim to merge engineering theory with innovative product design.
+                </p>
+                
+                <!-- CTA buttons -->
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
+                    <a href="#projects" class="bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white px-8 py-4 rounded-xl text-md font-bold shadow-lg shadow-sky-500/20 dark:shadow-sky-500/10 hover:shadow-xl hover:shadow-sky-500/30 transition-all flex items-center justify-center space-x-2 transform hover:-translate-y-0.5">
+                        <span>Explore Featured Projects</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                    <a href="#contact" class="bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 border border-[#e2e8f0] dark:border-[#1f2937] text-slate-800 dark:text-slate-200 px-8 py-4 rounded-xl text-md font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center transform hover:-translate-y-0.5">
+                        <span>Get In Touch</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Graphic / Profile Photo -->
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative group">
+                    <!-- Tech border decoration -->
+                    <div class="absolute -inset-4 rounded-full border border-sky-400/20 dark:border-sky-500/10 animate-[spin_40s_linear_infinite] pointer-events-none">
+                        <div class="absolute top-0 left-1/2 w-3 h-3 bg-sky-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 shadow-lg shadow-sky-500/50"></div>
+                        <div class="absolute bottom-0 left-1/2 w-3 h-3 bg-indigo-500 rounded-full transform -translate-x-1/2 translate-y-1/2 shadow-lg shadow-indigo-500/50"></div>
+                    </div>
+                    <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-sky-600 to-indigo-600 opacity-20 group-hover:opacity-30 blur transition duration-500"></div>
+                    
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl">
+                        <img src="profile-photo.jpg" alt="Vivaan Thadani" class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition duration-700 ease-out">
+                    </div>
+                    
+                    <!-- Decorative floating widgets -->
+                    <div class="absolute -bottom-2 -left-2 bg-white dark:bg-slate-800 border border-[#e2e8f0] dark:border-[#1f2937] px-4 py-2.5 rounded-xl shadow-lg flex items-center space-x-2 text-xs font-bold font-mono">
+                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                        <span class="text-slate-700 dark:text-slate-200">CAD & FEA Focused</span>
+                    </div>
+                    
+                    <div class="absolute top-6 -right-6 bg-white dark:bg-slate-800 border border-[#e2e8f0] dark:border-[#1f2937] px-4 py-2.5 rounded-xl shadow-lg flex items-center space-x-2 text-xs font-bold font-mono">
+                        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span class="text-slate-700 dark:text-slate-200">GPA: 3.7 / 4.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 border-b border-[#e2e8f0] dark:border-[#1f2937]">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+                <h2 class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest font-mono">Background</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">About Me & Skills</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                <!-- Text Area -->
+                <div class="lg:col-span-7 space-y-6 text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+                    <p>
+                        My journey in mechanical engineering stems from a fundamental curiosity about how systems function, collaborate, and persist under stress. By investigating thermodynamics, fluid mechanics, material science, and kinematics, I aim to design components that are structurally optimized and practical to manufacture.
+                    </p>
+                    <p>
+                        I love bridging the gap between digital theory and physical product creation. I frequently translate my ideas into detailed SolidWorks CAD assemblies, perform structural optimization using FEA tools, and prototype systems with Arduinos, 3D printers, and custom-milled boards.
+                    </p>
+                    <p class="border-l-4 border-sky-500 pl-4 italic text-slate-500 dark:text-slate-400">
+                        "I am constantly looking for the next problem to dissect and solve, whether that means calculating static load lines, designing an IoT device enclosure, or refining complex assemblies."
+                    </p>
+                </div>
+                
+                <!-- Skills Columns -->
+                <div class="lg:col-span-5 grid sm:grid-cols-2 gap-6">
+                    <!-- Skill Card 1 -->
+                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-sky-50 dark:bg-sky-950 flex items-center justify-center text-sky-600 dark:text-sky-400">
+                            <!-- Ruler / Engineering drawing icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2H3a2 2 0 01-2-2V4a2 2 0 012-2h6a2 2 0 012 2v1zm-3 8h10M5 16h10M7 20h8"></path></svg>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-bold text-slate-900 dark:text-white">CAD & CAE</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">SolidWorks, AutoCAD, TinkerCAD, Custom Assembly Drafting</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Card 2 -->
+                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                            <!-- Graph/Sim Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2"></path></svg>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-bold text-slate-900 dark:text-white">Analysis & Simulation</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">ANSYS FEA, MATLAB, Simulink, Stress Analysis, Mesh Generation</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Card 3 -->
+                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                            <!-- Code Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-bold text-slate-900 dark:text-white">Programming</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">Python, C/C++, Arduino Scripting, Hardware Interfaces</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Skill Card 4 -->
+                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-950 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                            <!-- Hardware / Printing Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-bold text-slate-900 dark:text-white">Prototyping</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">Arduino Boards, FDM 3D Printing, Laser Cutting, PCB Design</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-slate-50/50 dark:bg-slate-900/30 border-b border-[#e2e8f0] dark:border-[#1f2937]">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+                <h2 class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest font-mono">Portfolio</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Featured Engineering Projects</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="project-card rounded-2xl overflow-hidden flex flex-col group">
+                    <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+                        <img src="safety_necklace.png" alt="Safety Necklace for the Elderly" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <!-- Blueprint grid icon tag -->
+                        <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md border border-slate-700/50 px-2.5 py-1 rounded-lg text-[10px] font-bold font-mono text-sky-400 uppercase tracking-wider">
+                            Wearable / Tech
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col space-y-4">
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">Safety Necklace for the Elderly</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-grow">
+                            Designed a lightweight, recyclable plastic wearable neckpiece integrated with Fall Detection algorithms. Serves as a prompt alert system for seniors and a secondary hardware authenticator to protect credit cards.
+                        </p>
+                        
+                        <!-- Technical Specs List -->
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-3 rounded-lg border border-slate-100 dark:border-slate-800/60 font-mono text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+                            <div><strong class="text-slate-700 dark:text-slate-300">Software:</strong> AutoCAD, SolidWorks</div>
+                            <div><strong class="text-slate-700 dark:text-slate-300">Hardware:</strong> Arduino, Accelerometer, RFID</div>
+                            <div><strong class="text-slate-700 dark:text-slate-300">Material:</strong> Recyclable PLA / ABS</div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="tech-spec-tag bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 px-2 py-0.5 rounded border border-sky-100 dark:border-sky-950">Arduino</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2 py-0.5 rounded border border-indigo-100 dark:border-indigo-950">CAD Design</span>
+                        </div>
+                        
+                        <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <a href="#" class="inline-flex items-center text-sm font-bold text-sky-600 hover:text-sky-700 dark:text-sky-400 dark:hover:text-sky-300 group/link">
+                                <span>View Technical Details</span>
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card rounded-2xl overflow-hidden flex flex-col group">
+                    <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+                        <img src="bicycle_fea.png" alt="FEA of a Bicycle Frame" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md border border-slate-700/50 px-2.5 py-1 rounded-lg text-[10px] font-bold font-mono text-emerald-400 uppercase tracking-wider">
+                            Simulation / FEA
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col space-y-4">
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">FEA of a Bicycle Frame</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-grow">
+                            Conducted detailed Finite Element Analysis (FEA) on a custom bicycle chassis design. Optimized joints and tube wall thickness under load boundary conditions, cutting chassis mass by 14% while retaining structural integrity.
+                        </p>
+                        
+                        <!-- Technical Specs List -->
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-3 rounded-lg border border-slate-100 dark:border-slate-800/60 font-mono text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+                            <div><strong class="text-slate-700 dark:text-slate-300">Software:</strong> ANSYS Mechanical, SolidWorks</div>
+                            <div><strong class="text-slate-700 dark:text-slate-300">Calculations:</strong> Mesh Grid Independence</div>
+                            <div><strong class="text-slate-700 dark:text-slate-300">Criteria:</strong> Von-Mises Stress, Factor of Safety</div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="tech-spec-tag bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 px-2 py-0.5 rounded border border-emerald-100 dark:border-emerald-950">ANSYS FEA</span>
+                            <span class="tech-spec-tag bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 px-2 py-0.5 rounded border border-sky-100 dark:border-sky-950">SolidWorks</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2 py-0.5 rounded border border-indigo-100 dark:border-indigo-950">Optimization</span>
+                        </div>
+                        
+                        <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <a href="#" class="inline-flex items-center text-sm font-bold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-355 group/link">
+                                <span>View Simulation Report</span>
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card rounded-2xl overflow-hidden flex flex-col group">
+                    <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+                        <img src="weather_station.png" alt="IoT Weather Station" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md border border-slate-700/50 px-2.5 py-1 rounded-lg text-[10px] font-bold font-mono text-amber-400 uppercase tracking-wider">
+                            Electronics / IoT
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col space-y-4">
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">IoT Weather Station</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-grow">
+                            Engineered a solar-recharged, smart outdoor atmospheric collector using an ESP32. Set up high-precision environmental sensors (temperature, pressure, wind) and programmed live data feeds to a secure web dashboard.
+                        </p>
+                        
+                        <!-- Technical Specs List -->
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-3 rounded-lg border border-slate-100 dark:border-slate-800/60 font-mono text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
+                            <div><strong class="text-slate-700 dark:text-slate-300">Software:</strong> C++, ESP32 Core, Webhooks</div>
+                            <div><strong class="text-slate-700 dark:text-slate-300">Hardware:</strong> ESP32, Solar Panel, BME280</div>
+                            <div><strong class="text-slate-700 dark:text-slate-300">Housing:</strong> 3D Printed Weatherproof Acrylic</div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="tech-spec-tag bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 px-2 py-0.5 rounded border border-amber-100 dark:border-amber-950">ESP32</span>
+                            <span class="tech-spec-tag bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 px-2 py-0.5 rounded border border-emerald-100 dark:border-emerald-950">PCB Design</span>
+                            <span class="tech-spec-tag bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 px-2 py-0.5 rounded border border-sky-100 dark:border-sky-950">IoT</span>
+                        </div>
+                        
+                        <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <a href="#" class="inline-flex items-center text-sm font-bold text-amber-600 hover:text-amber-700 dark:text-amber-400 dark:hover:text-amber-300 group/link">
+                                <span>View Schematic Files</span>
+                                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience" class="py-24 border-b border-[#e2e8f0] dark:border-[#1f2937]">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+                <h2 class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest font-mono">Journey</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Education & Experience</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Education Column -->
+                <div class="space-y-8">
+                    <h3 class="text-xl font-bold flex items-center space-x-3 text-slate-900 dark:text-white">
+                        <span class="p-2 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400">
+                            <!-- Academic Cap Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path></svg>
+                        </span>
+                        <span>Education</span>
+                    </h3>
+                    
+                    <div class="relative border-l border-slate-200 dark:border-slate-800 pl-6 space-y-8 ml-4">
+                        <!-- Education Item 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full border-4 border-[#f8fafc] dark:border-[#0b0f19] bg-sky-500 timeline-dot"></span>
+                            <div class="space-y-1.5">
+                                <span class="text-xs font-bold font-mono text-sky-600 dark:text-sky-400">September 2024 - April 2028 (Expected)</span>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">B.Eng, Mechanical Engineering</h4>
+                                <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Toronto Metropolitan University</p>
+                                <div class="flex flex-wrap gap-2 pt-1.5">
+                                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-xs font-semibold border border-emerald-100 dark:border-emerald-900/40">GPA: 3.7 / 4.0</span>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 text-xs font-semibold border border-indigo-100 dark:border-indigo-900/40">Dean's List (2025)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education Item 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full border-4 border-[#f8fafc] dark:border-[#0b0f19] bg-sky-500 timeline-dot"></span>
+                            <div class="space-y-1.5">
+                                <span class="text-xs font-bold font-mono text-sky-600 dark:text-sky-400">2020 - 2024</span>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">OSSD, High School Diploma</h4>
+                                <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Newmarket High School</p>
+                                <div class="flex flex-wrap gap-2 pt-1.5">
+                                    <span class="px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 text-xs font-semibold border border-sky-100 dark:border-sky-900/40">French Immersion</span>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 text-xs font-semibold border border-amber-100 dark:border-amber-900/40">90% Principal's Honour Roll</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Column -->
+                <div class="space-y-8">
+                    <h3 class="text-xl font-bold flex items-center space-x-3 text-slate-900 dark:text-white">
+                        <span class="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+                            <!-- Briefcase Icon -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </span>
+                        <span>Work Experience</span>
+                    </h3>
+                    
+                    <div class="relative border-l border-slate-200 dark:border-slate-800 pl-6 space-y-8 ml-4">
+                        <!-- Work Item 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full border-4 border-[#f8fafc] dark:border-[#0b0f19] bg-indigo-500 timeline-dot"></span>
+                            <div class="space-y-2">
+                                <span class="text-xs font-bold font-mono text-indigo-600 dark:text-indigo-400">Summer 2023 - Summer 2025</span>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Summer Camp Counsellor</h4>
+                                <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Town of Bradford</p>
+                                <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1 list-disc list-inside">
+                                    <li>Enforced and monitored camper safety protocols at all times.</li>
+                                    <li>Designed, coordinated, and executed team-building physical events and crafts.</li>
+                                    <li>Practiced conflict resolution and communicated performance feedback to guardians.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Work Item 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-1.5 w-4.5 h-4.5 rounded-full border-4 border-[#f8fafc] dark:border-[#0b0f19] bg-indigo-500 timeline-dot"></span>
+                            <div class="space-y-2">
+                                <span class="text-xs font-bold font-mono text-indigo-600 dark:text-indigo-400">August 2022 - June 2023</span>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Ride Attendant</h4>
+                                <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Canada's Wonderland</p>
+                                <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-1 list-disc list-inside">
+                                    <li>Inspected mechanical ride harnesses, locking bars, and gates to guarantee rider safety.</li>
+                                    <li>Performed pre-operational safety check audits and visual infrastructure surveys.</li>
+                                    <li>Addressed large guest volumes with public announcements and active queue management.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-50/50 dark:bg-slate-900/30">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12 space-y-2">
+                <h2 class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest font-mono">Connect</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Get In Touch</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 mx-auto rounded"></div>
+                <p class="text-slate-600 dark:text-slate-400 pt-4 text-base max-w-lg mx-auto">
+                    I am actively seeking Fall 2026 / Winter 2027 Co-op opportunities. Feel free to reach out with project questions, work proposals, or simply to say hello!
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-12 gap-8 max-w-4xl mx-auto items-stretch">
+                <!-- Info pane -->
+                <div class="md:col-span-5 bg-gradient-to-tr from-sky-600 to-indigo-600 dark:from-sky-950 dark:to-indigo-950 text-white p-8 rounded-2xl flex flex-col justify-between shadow-xl">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-extrabold">Contact Info</h3>
+                        <p class="text-sky-100 dark:text-slate-300 text-sm leading-relaxed">
+                            Fill out the contact form, email me directly, or connect with me via LinkedIn. I will respond as soon as possible.
+                        </p>
+                        
+                        <div class="space-y-4 pt-4 text-sm font-mono text-sky-100 dark:text-slate-300">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                <span>vivaan.thadani@torontomu.ca</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <span>Toronto, ON, Canada</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-8 border-t border-white/20 dark:border-slate-800/40 flex space-x-4">
+                        <a href="https://linkedin.com/in/vivaanthadani" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-white/10 hover:bg-white/25 transition-colors text-white" aria-label="LinkedIn Profile">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-white/10 hover:bg-white/25 transition-colors text-white" aria-label="GitHub Profile">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Form pane -->
+                <div class="md:col-span-7 bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <!-- Setup Formspree Endpoint -->
+                    <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-xs font-bold font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wide">Your Name</label>
+                            <input type="text" name="name" id="name" required class="mt-1.5 block w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-sky-400 focus:bg-white dark:focus:bg-slate-950 transition-colors" placeholder="Jane Doe">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-xs font-bold font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wide">Your Email</label>
+                            <input type="email" name="email" id="email" required class="mt-1.5 block w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-sky-400 focus:bg-white dark:focus:bg-slate-950 transition-colors" placeholder="jane.doe@example.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-xs font-bold font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wide">Message</label>
+                            <textarea name="message" id="message" rows="4" required class="mt-1.5 block w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-sky-400 focus:bg-white dark:focus:bg-slate-950 transition-colors" placeholder="Tell me about your role or project..."></textarea>
+                        </div>
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 dark:bg-sky-500 dark:hover:bg-sky-600 text-white font-bold py-3.5 px-6 rounded-xl text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2">
+                                <span>Send Message</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9-7-9-7-9 7 9 7z"></path></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-10 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+        <div class="text-left">
+            <p class="text-sm font-bold text-slate-950 dark:text-white">&copy; 2026 Vivaan Thadani. All rights reserved.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">Built with HTML5, Tailwind CSS, custom grid systems, and coffee.</p>
+        </div>
+        
+        <div class="flex items-center space-x-4 text-sm font-semibold text-slate-600 dark:text-slate-400">
+            <a href="#about" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">About</a>
+            <span>&bull;</span>
+            <a href="#projects" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Projects</a>
+            <span>&bull;</span>
+            <a href="#experience" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Experience</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Theme Toggle implementation
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleBtnMob = document.getElementById('theme-toggle-mobile');
+    
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const darkIconMob = document.getElementById('theme-toggle-dark-icon-mob');
+    const lightIconMob = document.getElementById('theme-toggle-light-icon-mob');
+
+    // Display correct icon
+    function updateToggleIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+            lightIconMob.classList.remove('hidden');
+            darkIconMob.classList.add('hidden');
+        } else {
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+            darkIconMob.classList.remove('hidden');
+            lightIconMob.classList.add('hidden');
+        }
+    }
+    
+    updateToggleIcons();
+
+    function toggleTheme() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+        }
+        updateToggleIcons();
+    }
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+    themeToggleBtnMob.addEventListener('click', toggleTheme);
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when a link is clicked
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+</script>
+
+</body>
+</html>
