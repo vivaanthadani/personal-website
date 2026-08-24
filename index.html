@@ -32,6 +32,9 @@
     <!-- Link to Custom Stylesheet -->
     <link rel="stylesheet" href="styles.css">
     
+    <!-- Google Model Viewer Library -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    
     <!-- Inline theme script to prevent flash of unstyled content (FOUC) -->
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -365,6 +368,92 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Interactive 3D CAD Showcase -->
+            <div class="mt-20 border-t border-slate-200 dark:border-slate-800/80 pt-16">
+                <div class="max-w-3xl mx-auto text-center mb-10 space-y-2">
+                    <h3 class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest font-mono">3D CAD Model</h3>
+                    <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Interactive CAD Assembly Showcase</p>
+                    <div class="w-12 h-0.5 bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 mx-auto rounded"></div>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 pt-2">
+                        Rotate, zoom, and inspect the structural components. Switch to the FEA stress mapping to view loaded mesh behavior.
+                    </p>
+                </div>
+
+                <!-- 3D Viewer Container styled with dark slate/grid design -->
+                <div class="max-w-4xl mx-auto bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl overflow-hidden flex flex-col">
+                    
+                    <!-- Control Bar -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800/60 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="flex items-center space-x-2">
+                            <!-- Toggle standard/FEA view -->
+                            <button id="toggle-fea" class="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 transition-colors shadow-sm">
+                                <span id="toggle-indicator" class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span id="toggle-text">Show FEA Stress Contour</span>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2">
+                            <!-- Button for modal engineering drawings -->
+                            <button id="open-pdf-btn" class="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 dark:bg-sky-500 dark:hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-sky-500/10">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                <span>View 2D Engineering Drawing</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Area -->
+                    <div class="relative w-full h-[500px] md:h-[550px] bg-[#f8fafc] dark:bg-[#0b0f19] blueprint-grid">
+                        <model-viewer id="cad-viewer"
+                                      src="assets/models/assembly.glb"
+                                      alt="3D Interactive Mechanical Assembly Model"
+                                      camera-controls
+                                      auto-rotate
+                                      ar
+                                      shadow-intensity="1"
+                                      camera-orbit="45deg 75deg 105%"
+                                      min-camera-orbit="auto auto auto"
+                                      max-camera-orbit="auto auto auto"
+                                      field-of-view="30deg"
+                                      class="w-full h-full cursor-grab active:cursor-grabbing">
+                            
+                            <!-- Loading Poster Fallback -->
+                            <div slot="poster" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-100/80 dark:bg-slate-900/80 backdrop-blur-sm p-6 text-center space-y-4">
+                                <div class="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+                                <div class="space-y-1">
+                                    <p class="font-bold text-slate-800 dark:text-slate-100 text-sm">Loading 3D Assembly CAD Model...</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">If loading hangs, place 'assembly.glb' in 'assets/models/'</p>
+                                </div>
+                            </div>
+
+                            <!-- Hotspots annotations -->
+                            <!-- Hotspot 1: Support Base -->
+                            <button class="hotspot-pin" slot="hotspot-base" data-position="-0.01m 0.02m 0.05m" data-normal="0 1 0" data-visibility-attribute="visible">
+                                <div class="hotspot-tooltip">
+                                    <span class="block font-bold text-sky-400 mb-0.5 font-mono">01. Structural Mounting Base</span>
+                                    Cast steel alloy base plate with 4x mounting bolt points. Optimized for structural damping and static load distribution.
+                                </div>
+                            </button>
+
+                            <!-- Hotspot 2: Locking Pin / Fastener -->
+                            <button class="hotspot-pin" slot="hotspot-pin" data-position="0.05m 0.15m -0.02m" data-normal="1 0 0" data-visibility-attribute="visible">
+                                <div class="hotspot-tooltip">
+                                    <span class="block font-bold text-sky-400 mb-0.5 font-mono">02. Quick-Release Shaft Pin</span>
+                                    AISI 316 Stainless Steel lock pin with tight H7/g6 tolerance sizing to secure axial alignment during rotation.
+                                </div>
+                            </button>
+
+                            <!-- Hotspot 3: Tension Collar -->
+                            <button class="hotspot-pin" slot="hotspot-collar" data-position="-0.05m 0.25m 0.0m" data-normal="-1 0 0" data-visibility-attribute="visible">
+                                <div class="hotspot-tooltip">
+                                    <span class="block font-bold text-sky-400 mb-0.5 font-mono">03. Adjustment Tension Collar</span>
+                                    Anodized 6061-T6 Aluminum dynamic tension adjustment block utilizing an integrated compression spring mechanism.
+                                </div>
+                            </button>
+                        </model-viewer>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -539,6 +628,48 @@
         </div>
     </div>
 </footer>
+<!-- 2D Engineering Drawing Modal -->
+<div id="pdf-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md">
+    <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 w-full max-w-5xl h-[85vh] flex flex-col overflow-hidden shadow-2xl relative">
+        <!-- Modal Header -->
+        <div class="px-6 py-4 bg-slate-50 dark:bg-slate-900/60 border-b border-slate-200 dark:border-slate-800/80 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="p-1.5 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </span>
+                <h4 class="text-base font-extrabold text-slate-900 dark:text-white">Assembly Engineering Drawing (2D PDF)</h4>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <a href="assets/docs/assembly-drawing.pdf" download class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    <span>Download</span>
+                </a>
+                <button id="close-pdf-btn" class="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors" aria-label="Close modal">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Modal Body (PDF Viewer) -->
+        <div class="flex-grow bg-slate-100 dark:bg-slate-950 relative">
+            <!-- Loader -->
+            <div id="pdf-loader" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-4">
+                <div class="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+                <p class="font-mono text-xs text-slate-500 dark:text-slate-400">Loading drawing PDF...</p>
+            </div>
+            <iframe id="pdf-iframe" src="assets/docs/assembly-drawing.pdf" class="w-full h-full border-none relative z-10" type="application/pdf"></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast-notification" class="fixed bottom-6 right-6 z-50 transform translate-y-28 opacity-0 pointer-events-none bg-slate-900 dark:bg-slate-950 border border-amber-500/30 text-slate-100 dark:text-slate-200 px-5 py-3.5 rounded-xl shadow-2xl flex items-center space-x-3 transition-all duration-300 font-mono text-xs max-w-sm">
+    <span class="p-1 rounded bg-amber-500/10 text-amber-500">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+    </span>
+    <span id="toast-message">Simulation FEA model not yet uploaded. FEA Data Coming Soon!</span>
+</div>
 
 <script>
     // Theme Toggle implementation
@@ -596,6 +727,101 @@
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
         });
+    });
+
+    // ==========================================
+    // 3D CAD Viewer & PDF Modal Controllers
+    // ==========================================
+    const cadViewer = document.getElementById('cad-viewer');
+    const toggleFeaBtn = document.getElementById('toggle-fea');
+    const toggleText = document.getElementById('toggle-text');
+    const toggleIndicator = document.getElementById('toggle-indicator');
+    const toast = document.getElementById('toast-notification');
+    const toastMessage = document.getElementById('toast-message');
+
+    const pdfModal = document.getElementById('pdf-modal');
+    const openPdfBtn = document.getElementById('open-pdf-btn');
+    const closePdfBtn = document.getElementById('close-pdf-btn');
+    const pdfIframe = document.getElementById('pdf-iframe');
+    const pdfLoader = document.getElementById('pdf-loader');
+
+    let showingFEA = false;
+    let toastTimeout = null;
+
+    // Show custom toast notification
+    function showToast(message) {
+        toastMessage.textContent = message;
+        toast.classList.remove('translate-y-28', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        
+        if (toastTimeout) clearTimeout(toastTimeout);
+        
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-28', 'opacity-0', 'pointer-events-none');
+        }, 3500);
+    }
+
+    // Toggle FEA Stress Contour View
+    toggleFeaBtn.addEventListener('click', async () => {
+        if (!showingFEA) {
+            // Attempt to fetch the FEA file to check existence
+            try {
+                const response = await fetch('assets/models/assembly-fea.glb', { method: 'HEAD' });
+                if (response.ok) {
+                    cadViewer.src = 'assets/models/assembly-fea.glb';
+                    showingFEA = true;
+                    toggleText.textContent = 'Show Standard View';
+                    toggleIndicator.classList.remove('bg-emerald-500');
+                    toggleIndicator.classList.add('bg-sky-500');
+                    showToast('Swapped to FEA stress contour simulation view.');
+                } else {
+                    showToast('Simulation FEA model not yet uploaded. FEA Data Coming Soon!');
+                }
+            } catch (err) {
+                showToast('Simulation FEA model not yet uploaded. FEA Data Coming Soon!');
+            }
+        } else {
+            cadViewer.src = 'assets/models/assembly.glb';
+            showingFEA = false;
+            toggleText.textContent = 'Show FEA Stress Contour';
+            toggleIndicator.classList.remove('bg-sky-500');
+            toggleIndicator.classList.add('bg-emerald-500');
+            showToast('Swapped back to standard material assembly view.');
+        }
+    });
+
+    // Open/Close PDF Modal
+    openPdfBtn.addEventListener('click', () => {
+        pdfModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden'); // Disable background scrolling
+        
+        // Hide loader after iframe loaded
+        pdfLoader.style.display = 'flex';
+        pdfIframe.onload = () => {
+            pdfLoader.style.display = 'none';
+        };
+    });
+
+    function closePdfModal() {
+        pdfModal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    closePdfBtn.addEventListener('click', closePdfModal);
+
+    // Close modal if user clicks backdrop
+    pdfModal.addEventListener('click', (e) => {
+        if (e.target === pdfModal) {
+            closePdfModal();
+        }
+    });
+
+    // Keyboard support: Close modal with Escape key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !pdfModal.classList.contains('hidden')) {
+            closePdfModal();
+        }
     });
 </script>
 

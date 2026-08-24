@@ -160,3 +160,50 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link:hover::after {
     width: 100%;
 }
+
+/* Hotspot Styles for 3D Model Viewer */
+.hotspot-pin {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    background-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+}
+
+.hotspot-pin:hover {
+    transform: scale(1.25);
+    background-color: var(--accent-hover);
+}
+
+.hotspot-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    font-size: 11px;
+    line-height: 1.4;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    z-index: 50;
+    pointer-events: none;
+}
+
+.dark .hotspot-tooltip {
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hotspot-pin:hover .hotspot-tooltip,
+.hotspot-pin:focus-within .hotspot-tooltip {
+    display: block;
+}
