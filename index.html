@@ -403,14 +403,16 @@
                     </div>
 
                     <!-- Interactive Area -->
-                    <div class="relative w-full h-[500px] md:h-[550px] bg-[#f8fafc] dark:bg-[#0b0f19] blueprint-grid">
+                    <div class="relative w-full h-[500px] md:h-[550px] bg-[#0f172a] dark:bg-slate-950 blueprint-grid dark">
                         <model-viewer id="cad-viewer"
                                       src="https://media.githubusercontent.com/media/vivaanthadani/personal-website/main/assets/models/assembly.glb"
                                       alt="3D Interactive Mechanical Assembly Model"
                                       camera-controls
                                       auto-rotate
                                       ar
-                                      shadow-intensity="1"
+                                      shadow-intensity="1.2"
+                                      shadow-softness="0.4"
+                                      exposure="0.9"
                                       camera-orbit="45deg 75deg 105%"
                                       min-camera-orbit="auto auto auto"
                                       max-camera-orbit="auto auto auto"
@@ -418,11 +420,11 @@
                                       class="w-full h-full cursor-grab active:cursor-grabbing">
                             
                             <!-- Loading Poster Fallback -->
-                            <div slot="poster" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-100/80 dark:bg-slate-900/80 backdrop-blur-sm p-6 text-center space-y-4">
+                            <div slot="poster" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/80 backdrop-blur-sm p-6 text-center space-y-4">
                                 <div class="w-12 h-12 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
                                 <div class="space-y-1">
-                                    <p class="font-bold text-slate-800 dark:text-slate-100 text-sm">Loading 3D Assembly CAD Model...</p>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">If loading hangs, place 'assembly.glb' in 'assets/models/'</p>
+                                    <p class="font-bold text-slate-100 text-sm">Loading 3D Assembly CAD Model...</p>
+                                    <p class="text-xs text-slate-400">If loading hangs, place 'assembly.glb' in 'assets/models/'</p>
                                 </div>
                             </div>
 
