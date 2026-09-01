@@ -186,53 +186,65 @@
                     </p>
                 </div>
                 
-                <!-- Skills Columns -->
-                <div class="lg:col-span-5 grid sm:grid-cols-2 gap-6">
-                    <!-- Skill Card 1 -->
-                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-                        <div class="w-10 h-10 rounded-lg bg-sky-50 dark:bg-sky-950 flex items-center justify-center text-sky-600 dark:text-sky-400">
-                            <!-- Ruler / Engineering drawing icon -->
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2H3a2 2 0 01-2-2V4a2 2 0 012-2h6a2 2 0 012 2v1zm-3 8h10M5 16h10M7 20h8"></path></svg>
+                <!-- Skills Columns (Vertical 3-Category Layout) -->
+                <div class="lg:col-span-5 space-y-4">
+                    <!-- Category 1: Engineering Software -->
+                    <div class="bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-sky-50 dark:bg-sky-950 flex items-center justify-center text-sky-600 dark:text-sky-400">
+                                <!-- Software / Tools Icon -->
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2H3a2 2 0 01-2-2V4a2 2 0 012-2h6a2 2 0 012 2v1zm-3 8h10M5 16h10M7 20h8"></path></svg>
+                            </div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base">Engineering Software</h3>
                         </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-slate-900 dark:text-white">CAD & CAE</h3>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">SolidWorks, AutoCAD, TinkerCAD, Custom Assembly Drafting</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Skill Card 2 -->
-                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-                        <div class="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                            <!-- Graph/Sim Icon -->
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2"></path></svg>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-slate-900 dark:text-white">Analysis & Simulation</h3>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">ANSYS FEA, MATLAB, Simulink, Stress Analysis, Mesh Generation</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-spec-tag bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 px-2.5 py-1 rounded-md border border-sky-100 dark:border-sky-900/50 text-xs">SolidWorks</span>
+                            <span class="tech-spec-tag bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 px-2.5 py-1 rounded-md border border-sky-100 dark:border-sky-900/50 text-xs">ANSYS</span>
+                            <span class="tech-spec-tag bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 px-2.5 py-1 rounded-md border border-sky-100 dark:border-sky-900/50 text-xs">Fusion 360</span>
+                            <span class="tech-spec-tag bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 px-2.5 py-1 rounded-md border border-sky-100 dark:border-sky-900/50 text-xs">AutoCAD</span>
+                            <span class="tech-spec-tag bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 px-2.5 py-1 rounded-md border border-sky-100 dark:border-sky-900/50 text-xs">Bambu Studio</span>
                         </div>
                     </div>
                     
-                    <!-- Skill Card 3 -->
-                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-                            <!-- Code Icon -->
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <!-- Category 2: Core Engineering Skills -->
+                    <div class="bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                <!-- Gears Icon -->
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base">Core Engineering Skills</h3>
                         </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-slate-900 dark:text-white">Programming</h3>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">Python, C/C++, Arduino Scripting, Hardware Interfaces</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">3D CAD Modelling</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">Detailed Mechanical Drawings</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">GD&T</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">Electromechanical Design</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">Mechanical BOMs</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">Rapid Prototyping</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">CNC Machining</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">Additive Manufacturing</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">Assembly Planning</span>
+                            <span class="tech-spec-tag bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 px-2.5 py-1 rounded-md border border-indigo-100 dark:border-indigo-900/50 text-xs">Structural Analysis</span>
                         </div>
                     </div>
                     
-                    <!-- Skill Card 4 -->
-                    <div class="bg-white dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
-                        <div class="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-950 flex items-center justify-center text-amber-600 dark:text-amber-400">
-                            <!-- Hardware / Printing Icon -->
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    <!-- Category 3: Programming & Data Tools -->
+                    <div class="bg-white dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                                <!-- Code Icon -->
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            </div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base">Programming & Data Tools</h3>
                         </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-slate-900 dark:text-white">Prototyping</h3>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug">Arduino Boards, FDM 3D Printing, Laser Cutting, PCB Design</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="tech-spec-tag bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-100 dark:border-emerald-900/50 text-xs">Python</span>
+                            <span class="tech-spec-tag bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-100 dark:border-emerald-900/50 text-xs">MATLAB</span>
+                            <span class="tech-spec-tag bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-100 dark:border-emerald-900/50 text-xs">C</span>
+                            <span class="tech-spec-tag bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-100 dark:border-emerald-900/50 text-xs">Arduino</span>
+                            <span class="tech-spec-tag bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-100 dark:border-emerald-900/50 text-xs">Microsoft Excel</span>
+                            <span class="tech-spec-tag bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-100 dark:border-emerald-900/50 text-xs">LaTeX</span>
                         </div>
                     </div>
                 </div>
